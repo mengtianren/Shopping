@@ -20,10 +20,11 @@
     },
     methods: {
       onClick (id) {
-        this.$router.push({
-          name: 'news',
-          params: {id: id}
-        })
+        // this.$router.push({
+        //   name: 'news',
+        //   params: {id: id}
+        // })
+        window.location = 'http://m.i360mall.com/m/act/EYln0ScyorBWX.html'
         console.log(id)
       }
     }

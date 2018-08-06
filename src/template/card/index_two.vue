@@ -2,8 +2,8 @@
     <card>
       <div class="card_content" slot="content" @click="DetailUrl(list.id)" >
         <img :src="list.src">
-        <p class="text_color_orange font_weight_bold">￥{{list.new_price}}</p>
-        <p class="text_color_gray text_decoration_line_through">￥{{list.old_price}}</p>
+        <p class="text_color_orange font_size_30rem">￥{{list.new_price}}</p>
+        <p class="text_color_gray text_decoration_line_through font_size_28rem">￥{{list.old_price}}</p>
       </div>
     </card>
 </template>

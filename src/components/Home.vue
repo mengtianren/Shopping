@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!--<loading :show="loading" text="加载中..."></loading>-->
     <TemSwiper :img_list="img_list" ></TemSwiper>
     <!--<flexbox :gutter="0" wrap="wrap" class="bg_white" >-->
       <!--<flexbox-item :span="1/5" ><div class="flex" @click="LinkUrl('market')" ><img src="../../static/imgs/banner/1.png"><p>超市</p></div></flexbox-item>-->
@@ -36,6 +37,7 @@
 
 <script>
   import { Flexbox, FlexboxItem, Divider } from 'vux'
+  import { mapState } from 'vuex'
   import TemSwiper from '../template/swiper/index'
   import TemCardOne from '../template/card/index_one'
   import TemCardTwo from '../template/card/index_two'
@@ -52,11 +54,11 @@
     img: '../../static/imgs/swipper/3.jpg', // 404
     title: '送你一次旅行'
   }]
-  const Secondkill= [
-    {id: 0, src: '../../../static/imgs/5a9f56adN0f9f336a.jpg', name: '超市', new_price: 1000, old_price: 900},
-    {id: 1, src: '../../../static/imgs/5a9f56adN0f9f336a.jpg', name: '钱包', new_price: 1000, old_price: 900},
-    {id: 2, src: '../../../static/imgs/5a9f56adN0f9f336a.jpg', name: '钱包', new_price: 1000, old_price: 900},
-    {id: 3, src: '../../../static/imgs/5a9f56adN0f9f336a.jpg', name: '钱包', new_price: 1000, old_price: 900}
+  const Secondkill = [
+    {id: 0, src: '../../static/imgs/5a9f56adN0f9f336a.jpg', name: '超市', new_price: 1000, old_price: 900},
+    {id: 1, src: '../../static/imgs/5a9f56adN0f9f336a.jpg', name: '钱包', new_price: 1000, old_price: 900},
+    {id: 2, src: '../../static/imgs/5a9f56adN0f9f336a.jpg', name: '钱包', new_price: 1000, old_price: 900},
+    {id: 3, src: '../../static/imgs/5a9f56adN0f9f336a.jpg', name: '钱包', new_price: 1000, old_price: 900}
   ]
   export default {
     data () {
@@ -74,8 +76,12 @@
       TemMarquee,
       Divider
     },
+    computed: {
+      ...mapState({
+        loading: state => state.app.loading
+      })
+    },
     methods: {
-
       LinkUrl (item) {
         this.$router.push({path: `super/${item}`})
       },
@@ -86,7 +92,8 @@
           params: {id: id}
         })
       }
-    }
+    },
+    created () {}
   }
 </script>
 <style scoped lang="less" >

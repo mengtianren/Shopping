@@ -1,12 +1,10 @@
 <template>
-    <div>
-      分类
-    </div>
+    <div>这是购物车页面</div>
 </template>
 
 <script>
   export default {
-    name: 'Clothes'
+    name: 'Shop'
   }
 </script>
 
