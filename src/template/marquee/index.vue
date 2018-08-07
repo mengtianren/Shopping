@@ -9,11 +9,10 @@
 </template>
 
 <script>
-  import {Group, Cell, Marquee, MarqueeItem} from 'vux'
+  import {Cell, Marquee, MarqueeItem} from 'vux'
   export default {
     name: 'TemMarquee',
     components: {
-      Group,
       Cell,
       Marquee,
       MarqueeItem

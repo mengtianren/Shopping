@@ -5,12 +5,8 @@
 </template>
 
 <script>
-  import { Group } from 'vux'
   export default {
-    name: 'Appointment',
-    components: {
-      Group
-    }
+    name: 'Appointment'
   }
 </script>
 

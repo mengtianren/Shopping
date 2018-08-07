@@ -11,14 +11,8 @@
 </template>
 
 <script>
-  import { Group, XButton, Box } from 'vux'
   export default {
-    name: 'Favourite',
-    components: {
-      Group,
-      XButton,
-      Box
-    }
+    name: 'Favourite'
   }
 </script>
 

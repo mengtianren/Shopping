@@ -8,12 +8,8 @@
 </template>
 
 <script>
-  import { Group } from 'vux'
   export default {
-    name: 'Reward',
-    components: {
-      Group
-    }
+    name: 'Reward'
   }
 </script>
 

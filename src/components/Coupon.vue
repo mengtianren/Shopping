@@ -19,7 +19,7 @@
 </template>
 
 <script>
-  import { Tab, TabItem, Group, Box, XButton } from 'vux'
+  import { Tab, TabItem } from 'vux'
   const tabList = [
     {
       name: '可使用',
@@ -45,10 +45,7 @@
     },
     components: {
       Tab,
-      TabItem,
-      Group,
-      Box,
-      XButton
+      TabItem
     },
     methods: {
       GetTabType (list) {

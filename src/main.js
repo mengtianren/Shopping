@@ -10,9 +10,15 @@ import '../static/js/rem'
 import '../static/css/public.less'
 
 import VueCookies from 'vue-cookies'
+import { LoadingPlugin, Group, Box, XButton, XInput, AlertPlugin  } from 'vux'
 Vue.use(VueCookies)
-import { LoadingPlugin } from 'vux'
 Vue.use(LoadingPlugin)
+Vue.component('group', Group)
+Vue.component('box', Box)
+Vue.component('x-button', XButton)
+Vue.component('x-input', XInput)
+Vue.use(AlertPlugin)
+// Vue.directive('transfer-dom', TransferDom)
 
 // 或者umd方式
 // 引入构建的js文件
@@ -91,6 +97,18 @@ const routes = [
     name: 'reward',
     meta: {title: '我的奖品'},
     component: () => import('./components/Reward')
+  },
+  {
+    path: '/address',
+    name: 'address',
+    meta: {title: '我的地址'},
+    component: () => import('./components/Address')
+  },
+  {
+    path: '/gotoorder',
+    name: 'gotoorder',
+    meta: {title: '确认订单'},
+    component: () => import('./components/Gotoorder')
   }
 ]
 

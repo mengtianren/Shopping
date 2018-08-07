@@ -44,7 +44,7 @@
         <flexbox-item :span="2/9" ><div class="Shopping" @click="GoShop" >
           <img src="../assets/imgs/car_bg.png" alt="">
         </div></flexbox-item>
-        <flexbox-item :span="7/9" ><div class="Shopping_bg font_size_30rem">
+        <flexbox-item :span="7/9" @click.native="GoShop" ><div class="Shopping_bg font_size_30rem">
           ￥20.00加入购物车
         </div></flexbox-item>
 
@@ -59,8 +59,7 @@
     XAddress,
     ChinaAddressV4Data,
     InlineXNumber,
-    Card, Group, Cell,
-    XButton,
+    Card, Cell,
     Flexbox, FlexboxItem,
     Tab, TabItem,
     Checker, CheckerItem } from 'vux'
@@ -108,9 +107,7 @@
     components: {
       TemSwiper,
       Card,
-      Group,
       Cell,
-      XButton,
       Flexbox,
       FlexboxItem,
       Checker,

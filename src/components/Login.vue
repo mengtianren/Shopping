@@ -9,15 +9,8 @@
 </template>
 
 <script>
-  import { Group, XInput, Box, XButton } from 'vux'
   export default {
     name: 'Login',
-    components: {
-      XInput,
-      Group,
-      Box,
-      XButton
-    },
     methods: {
       Login () {
         this.$vux.loading.show({
