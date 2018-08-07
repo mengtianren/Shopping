@@ -4,7 +4,7 @@ const app = {
   state: {
     title: '首页',
     swiper_index: 0,
-    loading: false
+    loading: true
   },
   mutations: {
     SetSwiper (state, index) {

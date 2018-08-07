@@ -1,5 +1,6 @@
 <template>
   <div>
+    <TemLoading></TemLoading>
     <!--这是订单页面{{this.$route.params}}-->
     <tab :scroll-threshold="5">
       <tab-item

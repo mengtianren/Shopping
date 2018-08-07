@@ -1,5 +1,6 @@
 <template>
   <group class="font_size_28rem">
+    <TemLoading></TemLoading>
     <x-input title="手机号" name="mobile" placeholder="请输入手机号码" keyboard="number" is-type="china-mobile"></x-input>
     <x-input title="密码" type="password" placeholder="请输入密码"></x-input>
       <box gap="10px 10px">

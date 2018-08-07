@@ -1,5 +1,6 @@
 <template>
   <div>
+    <TemLoading></TemLoading>
     <group>
     <cell is-link link="/address">
       <div class="font_size_28rem" slot="title">你还没有添加地址信息，点击编辑~</div>
@@ -82,6 +83,12 @@
     methods: {
       onImgError (item, $event) {
         console.log(item, $event)
+      },
+      Gotoorder () {
+        this.$vux.alert.show({
+          title: '提示',
+          content: '页面暂未开发'
+        })
       }
     }
   }

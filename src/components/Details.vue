@@ -1,6 +1,7 @@
 <template>
     <div>
       <!--{{this.$route.params}}-->
+      <TemLoading></TemLoading>
       <TemSwiper :img_list="img_list" ></TemSwiper>
       <card >
         <p slot="content" class="card_padding">

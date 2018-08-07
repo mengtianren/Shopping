@@ -1,6 +1,7 @@
 <template>
   <div>
     <!--这是订单页面{{this.$route.params}}-->
+    <TemLoading></TemLoading>
     <tab :scroll-threshold="5">
       <tab-item
         v-for="(list, index) in tab_list"

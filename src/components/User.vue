@@ -1,5 +1,6 @@
 <template>
   <div>
+    <TemLoading></TemLoading>
     <blur :blur-amount=40 :height="200" url="//o3e85j0cv.qnssl.com/tulips-1083572__340.jpg">
       <p class="center">
         <img src="//o3e85j0cv.qnssl.com/tulips-1083572__340.jpg">

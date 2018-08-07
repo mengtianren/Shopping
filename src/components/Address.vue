@@ -1,5 +1,6 @@
 <template>
  <group>
+   <TemLoading></TemLoading>
     <box gap="10px 10px">
       <x-button type="primary" v-if="!address_show" @click.native="address_show=true" >添加收货地址</x-button>
     </box>

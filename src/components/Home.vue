@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!--<loading :show="loading" text="加载中..."></loading>-->
+    <TemLoading></TemLoading>
     <TemSwiper :img_list="img_list" ></TemSwiper>
     <!--<flexbox :gutter="0" wrap="wrap" class="bg_white" >-->
       <!--<flexbox-item :span="1/5" ><div class="flex" @click="LinkUrl('market')" ><img src="../../static/imgs/banner/1.png"><p>超市</p></div></flexbox-item>-->
@@ -37,7 +37,6 @@
 
 <script>
   import { Flexbox, FlexboxItem, Divider } from 'vux'
-  import { mapState } from 'vuex'
   import TemSwiper from '../template/swiper/index'
   import TemCardOne from '../template/card/index_one'
   import TemCardTwo from '../template/card/index_two'
@@ -75,11 +74,6 @@
       TemCardTwo,
       TemMarquee,
       Divider
-    },
-    computed: {
-      ...mapState({
-        loading: state => state.app.loading
-      })
     },
     methods: {
       LinkUrl (item) {

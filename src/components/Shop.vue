@@ -1,5 +1,6 @@
 <template>
   <div>
+    <TemLoading></TemLoading>
     <group>
       <flexbox :gutter="0" v-for="(item, index) in flexbox" :key="index" >
         <flexbox-item :span="1/8" class="text_align_center" >
@@ -81,7 +82,7 @@
         if (item === false) {
           this.whole_check = item
         }
-       this.newArray = this.flexbox.filter(item => item === true)
+        this.newArray = this.flexbox.filter(item => item === true)
         if (this.newArray.length === this.flexbox.length) {
           this.whole_check = true
         }
@@ -91,7 +92,7 @@
         if (this.newArray.length <= 0) {
           this.$vux.alert.show({
             title: '提示',
-            content: '请选择商品进行结算',
+            content: '请选择商品进行结算'
           })
         } else {
           this.$router.push('/gotoorder')

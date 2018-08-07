@@ -1,5 +1,8 @@
 <template>
-    <div>{{this.$route.params}}</div>
+    <div>
+      <TemLoading></TemLoading>
+      {{this.$route.params}}
+    </div>
 </template>
 
 <script>

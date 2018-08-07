@@ -1,5 +1,6 @@
 <template>
   <group>
+    <TemLoading></TemLoading>
     <div class="text_align_center padding_15_5_5">
       <img class="img_width" src="../assets/imgs/favourite_blank.png" alt="">
       <p class="font_size_28rem">您还没有喜欢的商品哦！</p>

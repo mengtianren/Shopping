@@ -1,5 +1,6 @@
 <template>
     <div>
+      <TemLoading></TemLoading>
       <tab bar-active-color="#668599"  :line-width="1" :scroll-threshold="5">
         <tab-item
           v-for="(list, index) in tab_list"

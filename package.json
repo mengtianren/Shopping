@@ -1,8 +1,8 @@
 {
-  "name": "y",
+  "name": "DEMO",
   "version": "1.0.0",
-  "description": "y",
-  "author": "y",
+  "description": "DEMO",
+  "author": "DEMO",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config  build/webpack.dev.conf.js --open --hot --host 0.0.0.0",
