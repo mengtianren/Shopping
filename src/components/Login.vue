@@ -14,6 +14,7 @@
 
 <script>
   import { Cell } from 'vux'
+  import { mapMutations } from 'vuex'
   export default {
     name: 'Login',
     data () {
@@ -26,6 +27,7 @@
       Cell
     },
     methods: {
+      ...mapMutations(['SetUser']),
       Login () {
         let params = {
           nick_mobile: this.nick_mobile,
@@ -34,6 +36,7 @@
         let _this = this
         this.$axios.post('/users/login', params)
           .then(res => {
+            this.$store.commit('SetUser', res.data)
             this.$vux.alert.show({
               title: '提示',
               content: res.message,
@@ -41,7 +44,6 @@
                 _this.$router.push('/')
               }
             })
-
           }).catch(error => {
             this.$vux.alert.show({
               title: '错误',

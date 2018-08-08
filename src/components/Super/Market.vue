@@ -9,16 +9,22 @@
           :selected="index === 0" >{{list.name}}</tab-item>
       </tab>
 
-      <div>这是显示的{{new_item}}内容</div>
-      <flexbox :gutter="0" wrap="wrap" >
-        <flexbox-item
-          :span="1/2"
-          v-for="(list, index) in new_content"
-          :key="index">
-          <TemCardOne :list="list" ></TemCardOne>
-        </flexbox-item>
-      </flexbox>
-      <!--<router-view></router-view>-->
+     <group v-if="new_content.length>0">
+       <flexbox :gutter="0" wrap="wrap"  >
+         <flexbox-item
+           :span="1/2"
+           v-for="(list, index) in new_content"
+           :key="index">
+           <TemCardOne :list="list" ></TemCardOne>
+         </flexbox-item>
+       </flexbox>
+     </group>
+      <group v-if="new_content.length<=0">
+          <div class="text_align_center padding_15_5_5">
+            <img width="100px" src="../../assets/imgs/favourite_blank.png" alt="">
+            <p class="font_size_28rem">该分类下暂无商品！</p>
+          </div>
+    </group>
     </div>
 
 </template>
@@ -26,28 +32,13 @@
 <script>
   import { Tab, TabItem, Flexbox, FlexboxItem } from 'vux'
   import TemCardOne from '../../template/card/index_one'
-  const newContent = [
-    {id: 0, src: '../assets/imgs/5a9f56adN0f9f336a.jpg', name: '超市', new_price: 1000, old_price: 900},
-    {id: 1, src: '../assets/imgs/5a9f56adN0f9f336a.jpg', name: '钱包', new_price: 1000, old_price: 900},
-    {id: 2, src: '../assets/imgs/5a9f56adN0f9f336a.jpg', name: '钱包', new_price: 1000, old_price: 900},
-    {id: 3, src: '../assets/imgs/5a9f56adN0f9f336a.jpg', name: '钱包', new_price: 1000, old_price: 900}
-  ]
-
   export default {
     name: 'Market',
     data () {
       return {
-        tab_list: [
-          { name: '洗护喂养', link: 'clothes' },
-          { name: '精选', link: 'selected' },
-          { name: '奶瓶辅食', link: 'feeding' },
-          { name: '尿裤湿巾', link: 'diaper' },
-          { name: '儿童玩具', link: 'toys' },
-          { name: '车床座椅', link: 'bed' },
-          { name: '中外乐器', link: 'instruments' }
-        ],
-        new_item: '洗护喂养',
-        new_content: newContent
+        tab_list: [],
+        new_item: '全部',
+        new_content: []
       }
     },
     components: {
@@ -58,9 +49,32 @@
       TemCardOne
     },
     methods: {
+      GetDate () {
+        this.$axios.post('/type/list')
+          .then(res => {
+            this.tab_list = res.data
+          })
+      },
+      GetContent (id) {
+        this.$axios.post('/commodity/list', {type_id: id})
+          .then(res => {
+            this.new_content = res.data
+          }).catch(err => {
+            this.$vux.alert.show({
+              title: '提示',
+              content: err.message
+            })
+          })
+      },
       ItemIndex (list) {
         this.new_item = list.name
+        console.log(list)
+        this.GetContent(list.id)
       }
+    },
+    mounted () {
+      this.GetDate()
+      this.GetContent(0)
     }
   }
 </script>

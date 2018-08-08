@@ -26,7 +26,7 @@
     <flexbox :gutter="0" wrap="wrap" >
       <flexbox-item
         :span="1/2"
-        v-for="(list, index) in second_kill"
+        v-for="(list, index) in new_content"
         :key="index">
           <TemCardOne :list="list" ></TemCardOne>
       </flexbox-item>
@@ -63,7 +63,8 @@
     data () {
       return {
         img_list: imgList,
-        second_kill: Secondkill
+        second_kill: Secondkill,
+        new_content: []
       }
     },
     components: {
@@ -76,6 +77,17 @@
       Divider
     },
     methods: {
+      GetContent (id) {
+        this.$axios.post('/commodity/list', {type_id: id})
+          .then(res => {
+            this.new_content = res.data.slice(0, 4)
+          }).catch(err => {
+            this.$vux.alert.show({
+              title: '提示',
+              content: err.message
+            })
+          })
+      },
       LinkUrl (item) {
         this.$router.push({path: `super/${item}`})
       },
@@ -87,7 +99,9 @@
         })
       }
     },
-    created () {}
+    created () {
+      this.GetContent(4)
+    }
   }
 </script>
 <style scoped lang="less" >

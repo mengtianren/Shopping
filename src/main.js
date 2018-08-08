@@ -36,7 +36,7 @@ const router = new VueRouter({
 })
 router.beforeEach((to, from, next) => {
   document.querySelector('title').innerText = to.meta.title
-  store.commit('SetTitle', to.meta.title)
+
   store.commit('SetLoading', true)
   if (to.meta.user) {
     if (VueCookies.get('session')) {
@@ -50,6 +50,7 @@ router.beforeEach((to, from, next) => {
 })
 router.afterEach((to, from, next) => {
   window.scrollTo(0, 0)
+  store.commit('SetTitle', to.meta.title)
   store.commit('SetLoading', false)
 })
 

@@ -1,7 +1,7 @@
 import axios from 'axios'
 const axiosIns = axios.create({
   // http://www.mteen.cn:4000
-  baseURL: 'http://www.mteen.cn:4000/api',
+  baseURL: '/api',
   timeout: 30000
 })
 
@@ -13,9 +13,11 @@ axiosIns.interceptors.request.use(function (config) {
    * 如果token存在那就把token放到接口头部进行处理
    * 如果报错则返回错误
    */
+  /***
+   * 跨域设置缓存
+   */
   config.credentials = 'include'
-  config.withCredentials = true   //跨域设置缓存
-  // config.headers['xhrFields'] = { withCredentials: true }
+  config.withCredentials = true
   return config
 }, function (error) {
   return Promise.reject(error)

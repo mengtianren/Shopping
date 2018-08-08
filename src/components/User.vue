@@ -1,10 +1,10 @@
 <template>
   <div>
     <TemLoading></TemLoading>
-    <blur :blur-amount=40 :height="200" url="//o3e85j0cv.qnssl.com/tulips-1083572__340.jpg">
+    <blur :blur-amount=40 :height="200" :url="user.nick_icon">
       <p class="center">
-        <img src="//o3e85j0cv.qnssl.com/tulips-1083572__340.jpg">
-        <i class="display_block font_style_normal">Name</i>
+        <img :src="user.nick_icon">
+        <i class="display_block font_style_normal">{{user.nick_name}}</i>
 
       </p>
     </blur>
@@ -57,6 +57,7 @@
 
 <script>
   import {Flexbox, FlexboxItem, Blur, Cell} from 'vux'
+  import { mapState, mapMutations } from 'vuex'
   export default {
     components: {
       Blur,
@@ -65,20 +66,20 @@
       Cell
     },
     data () {
-      return {
-        images: [
-          'https://o3e85j0cv.qnssl.com/tulips-1083572__340.jpg',
-          'https://o3e85j0cv.qnssl.com/waterway-107810__340.jpg',
-          'https://o3e85j0cv.qnssl.com/hot-chocolate-1068703__340.jpg'
-        ],
-        url: 'https://o3e85j0cv.qnssl.com/tulips-1083572__340.jpg'
-      }
+      return {}
+    },
+    computed: {
+      ...mapState({
+        user: state => state.user.user
+      })
     },
     methods: {
+      ...mapMutations(['ClearSession']),
       LoginOut () {
         let _this = this
         this.$axios.post('/users/out')
           .then(res => {
+            this.ClearSession()
             this.$vux.alert.show({
               title: '提示',
               content: res.message,
@@ -91,9 +92,7 @@
               title: '提示',
               content: err.message
             })
-        })
-
-
+          })
       }
     }
   }
