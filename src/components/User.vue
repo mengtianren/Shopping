@@ -76,12 +76,24 @@
     },
     methods: {
       LoginOut () {
-        this.$cookies.remove('login')
-        this.$vux.loading.show({
-          text: '正在退出登录'
+        let _this = this
+        this.$axios.post('/users/out')
+          .then(res => {
+            this.$vux.alert.show({
+              title: '提示',
+              content: res.message,
+              onHide () {
+                _this.$router.push('/')
+              }
+            })
+          }).catch(err => {
+            this.$vux.alert.show({
+              title: '提示',
+              content: err.message
+            })
         })
-        this.$router.push('/')
-        this.$vux.loading.hide()
+
+
       }
     }
   }

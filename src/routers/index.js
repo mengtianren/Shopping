@@ -11,14 +11,22 @@ const super1 = {
     }
   ]
 }
-const User = {
-  path: '/login',
-  name: 'login',
-  meta: {title: '登录'},
-  component: () => import('../components/Login')
-}
+const User = [
+  {
+    path: '/login',
+    name: 'login',
+    meta: {title: '登录'},
+    component: () => import('../components/Login')
+  },
+  {
+    path: '/register',
+    name: 'register',
+    meta: {title: '注册'},
+    component: () => import('../components/Register')
+  }
+]
 export const routes = [
-  User,
+  ...User,
   {
     path: '/',
     meta: {title: '首页'},

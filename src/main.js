@@ -10,6 +10,7 @@ import store from './store'
 import '../static/js/rem'
 import '../static/css/public.less'
 
+import api from './ajax/index'
 import VueCookies from 'vue-cookies'
 import { Loading, Group, Box, XButton, XInput, AlertPlugin } from 'vux'
 import TemLoading from './template/loading/index'
@@ -27,6 +28,7 @@ Vue.component('TemLoading', TemLoading)
 // 或者umd方式
 // 引入构建的js文件
 // Vue.use(vuxLoadingPlugin)
+Vue.prototype.$axios = api
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -37,7 +39,7 @@ router.beforeEach((to, from, next) => {
   store.commit('SetTitle', to.meta.title)
   store.commit('SetLoading', true)
   if (to.meta.user) {
-    if (VueCookies.get('login')) {
+    if (VueCookies.get('session')) {
       next()
     } else {
       next({name: 'login'})
