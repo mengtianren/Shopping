@@ -39,7 +39,7 @@ router.beforeEach((to, from, next) => {
 
   store.commit('SetLoading', true)
   if (to.meta.user) {
-    if (VueCookies.get('session')) {
+    if (VueCookies.get('session') && sessionStorage.getItem('user')) {
       next()
     } else {
       next({name: 'login'})

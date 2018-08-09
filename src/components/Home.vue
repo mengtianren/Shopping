@@ -92,7 +92,6 @@
         this.$router.push({path: `super/${item}`})
       },
       LinkDetail (id) {
-        alert(1)
         this.$router.push({
           name: 'details',
           params: {id: id}
@@ -100,7 +99,7 @@
       }
     },
     created () {
-      this.GetContent(4)
+      this.GetContent(0)
     }
   }
 </script>
